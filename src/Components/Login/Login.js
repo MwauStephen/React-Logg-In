@@ -1,17 +1,19 @@
 import React from "react";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
+import styles from "./Login.module.css";
 
 const Login = () => {
   return (
-    <Card>
+    <Card className={styles.login}>
       <form>
         <div>
-          <label>E-mail:</label>
-          <input type="email" />
+          <label htmlFor="email">E-mail:</label>
+          <input type="email" id="email" />
         </div>
         <div>
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password" />
         </div>
         <div>
           <Button>Login</Button>
