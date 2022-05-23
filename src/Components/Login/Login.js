@@ -7,15 +7,15 @@ const Login = () => {
   return (
     <Card className={styles.login}>
       <form>
-        <div>
+        <div className={styles.control}>
           <label htmlFor="email">E-mail:</label>
           <input type="email" id="email" />
         </div>
-        <div>
+        <div className={styles.control}>
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" />
         </div>
-        <div>
+        <div className={styles.actions}>
           <Button>Login</Button>
         </div>
       </form>
