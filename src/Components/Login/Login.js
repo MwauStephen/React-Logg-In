@@ -4,9 +4,12 @@ import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
 
 const Login = () => {
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+  };
   return (
     <Card className={styles.login}>
-      <form>
+      <form onSubmit={formSubmitHandler}>
         <div className={styles.control}>
           <label htmlFor="email">E-mail:</label>
           <input type="email" id="email" />
