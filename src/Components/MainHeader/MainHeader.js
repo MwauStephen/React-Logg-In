@@ -3,7 +3,7 @@ import styles from "./MainHeader.module.css";
 
 const MainHeader = () => {
   return (
-    <header>
+    <header className={styles["main-header"]}>
       <h1>A login Page</h1>
     </header>
   );
