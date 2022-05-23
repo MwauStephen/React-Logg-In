@@ -1,8 +1,9 @@
 import React from "react";
+import Button from "../UI/Button/Button";
 
 const Login = () => {
   return (
-    <form >
+    <form>
       <div>
         <label>E-mail:</label>
         <input type="email" />
@@ -11,7 +12,7 @@ const Login = () => {
         <label>Password:</label>
       </div>
       <div>
-        <button></button>
+        <Button />
       </div>
     </form>
   );
