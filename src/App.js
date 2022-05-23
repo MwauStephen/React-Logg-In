@@ -1,8 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import MainHeader from "./Components/MainHeader/MainHeader";
 
 function App() {
-  return <MainHeader />;
+  return (
+    <Fragment>
+      <MainHeader />;
+      
+    </Fragment>
+  );
 }
 
 export default App;
