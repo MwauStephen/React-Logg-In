@@ -7,6 +7,9 @@ const Login = () => {
   const [emailIsValid, setEmailIsValid] = useState();
   const [passwordIsValid, setPassworIsValid] = useState();
 
+  const validateEmailHandler = () => {};
+  const validatePasswordHandler = () => {};
+
   const formSubmitHandler = (event) => {
     event.preventDefault();
   };
@@ -19,7 +22,7 @@ const Login = () => {
           }`}
         >
           <label htmlFor="email">E-mail:</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" onBlur={validateEmailHandler} />
         </div>
         <div
           className={`${styles.control} ${
@@ -27,7 +30,11 @@ const Login = () => {
           }`}
         >
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" />
+          <input
+            type="password"
+            id="password"
+            onBlur={validatePasswordHandler}
+          />
         </div>
         <div className={styles.actions}>
           <Button>Login</Button>
