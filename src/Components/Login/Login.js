@@ -39,12 +39,16 @@ const Login = () => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    console.log(enteredEmail, enteredPassword);
+    // clear form inputs on submission
+    setEnteredEmail("");
+    setEnteredPassword("");
   };
   return (
     <Card className={styles.login}>
       <form onSubmit={formSubmitHandler}>
         <div
-          className={`${styles.controls} ${
+          className={`${styles.control} ${
             emailIsValid === false ? styles.invalid : ""
           }`}
         >
@@ -54,6 +58,7 @@ const Login = () => {
             id="email"
             onBlur={validateEmailHandler}
             onChange={emailChangeHandler}
+            value={enteredEmail}
           />
         </div>
         <div
@@ -67,6 +72,7 @@ const Login = () => {
             id="password"
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
+            value={enteredPassword}
           />
         </div>
         <div className={styles.actions}>
