@@ -3,7 +3,7 @@ import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
 
-const Login = () => {
+const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [emailIsValid, setEmailIsValid] = useState();
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -41,8 +41,11 @@ const Login = () => {
     event.preventDefault();
     console.log(enteredEmail, enteredPassword);
     // clear form inputs on submission
-    setEnteredEmail("");
-    setEnteredPassword("");
+    // setEnteredEmail("");
+    // setEnteredPassword("");
+
+    // lifiting state up
+    props.onLoggedIn(enteredEmail, enteredPassword);
   };
   return (
     <Card className={styles.login}>
