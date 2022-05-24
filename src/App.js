@@ -18,7 +18,7 @@ function App() {
   };
   return (
     <Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} />
+      <MainHeader isAuthenticated={isLoggedIn} onLogOut={logOutHandler} />
       <main>
         {!isLoggedIn && <Login onLoggedIn={loginHandler} />}
 
