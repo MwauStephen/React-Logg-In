@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import MainHeader from "./Components/MainHeader/MainHeader";
 import Login from "./Components/Login/Login";
-import Navigation from "./Components/MainHeader/Navigation";
+
 import Home from "./Components/Home/Home";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <Fragment>
       <MainHeader isAuthenticated={isLoggedIn} />
       <main>
-        <Login onLoggedIn={loginHandler} />
+        {!isLoggedIn && <Login onLoggedIn={loginHandler} />}
 
         <Home />
       </main>
