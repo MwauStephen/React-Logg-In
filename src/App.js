@@ -5,12 +5,18 @@ import Navigation from "./Components/MainHeader/Navigation";
 import Home from "./Components/Home/Home";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const loginHandler = (email, password) => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <Fragment>
-      <MainHeader />
+      <MainHeader isAuthenticated={isLoggedIn} />
       <main>
-        <Login />
-        <Navigation />
+        <Login onLoggedIn={loginHandler} />
+
         <Home />
       </main>
     </Fragment>
