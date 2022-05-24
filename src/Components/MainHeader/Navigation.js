@@ -4,12 +4,23 @@ import styles from "./Navigation.module.css";
 const Navigation = (props) => {
   return (
     <nav className={styles.nav}>
-      <ul >
-        <li>Users</li>
-        <li>Admin</li>
-        <li>
-          <button>Log Out</button>
-        </li>
+      <ul>
+        {props.isLoggedIn && (
+          <li>
+            <a href="/">Users</a>
+          </li>
+        )}
+
+        {props.isLoggedIn && (
+          <li>
+            <a href="/">Admin</a>
+          </li>
+        )}
+        {props.isLoggedIn && (
+          <li>
+            <button>Log Out</button>
+          </li>
+        )}
       </ul>
     </nav>
   );
