@@ -79,7 +79,9 @@ const Login = (props) => {
           />
         </div>
         <div className={styles.actions}>
-          <Button type="submit">Login</Button>
+          <Button type="submit" disabled={!formIsValid}>
+            Login
+          </Button>
         </div>
       </form>
     </Card>
