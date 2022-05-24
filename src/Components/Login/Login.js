@@ -12,6 +12,8 @@ const Login = () => {
   //   handling email and password inputs
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
+
+    // check if form is valid
   };
 
   const passwordChangeHandler = (event) => {
@@ -23,7 +25,7 @@ const Login = () => {
     setEmailIsValid(enteredEmail.includes("@"));
   };
   const validatePasswordHandler = () => {
-    setEnteredPassword(enteredPassword.trim().length > 6);
+    setPassworIsValid(enteredPassword.trim().length > 6);
   };
 
   const formSubmitHandler = (event) => {
