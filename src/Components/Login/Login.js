@@ -6,7 +6,7 @@ import styles from "./Login.module.css";
 const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [emailIsValid, setEmailIsValid] = useState();
-  const [enteredPassword, setEmteredPassword] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordIsValid, setPassworIsValid] = useState();
 
   //   handling email and password inputs
@@ -15,14 +15,16 @@ const Login = () => {
   };
 
   const passwordChangeHandler = (event) => {
-    setEmteredPassword(event.target.value);
+    setEnteredPassword(event.target.value);
   };
 
   //   validate email and password
   const validateEmailHandler = () => {
-      
+    setEmailIsValid(enteredEmail.includes("@"));
   };
-  const validatePasswordHandler = () => {};
+  const validatePasswordHandler = () => {
+    setEnteredPassword(enteredPassword.trim().length > 6);
+  };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
