@@ -14,7 +14,10 @@ const Login = () => {
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
 
-    // check if form is valid
+    // check if  entire form is valid
+    setFormIsValid(
+      event.target.value.includes("@") && enteredPassword.trim().length > 6
+    );
   };
 
   const passwordChangeHandler = (event) => {
