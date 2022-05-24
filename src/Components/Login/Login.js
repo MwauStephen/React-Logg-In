@@ -8,6 +8,7 @@ const Login = () => {
   const [emailIsValid, setEmailIsValid] = useState();
   const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordIsValid, setPassworIsValid] = useState();
+  const [formIsValid, setFormIsValid] = useState(false);
 
   //   handling email and password inputs
   const emailChangeHandler = (event) => {
