@@ -17,7 +17,7 @@ function App() {
       <main>
         {!isLoggedIn && <Login onLoggedIn={loginHandler} />}
 
-        <Home />
+        {isLoggedIn && <Home />}
       </main>
     </Fragment>
   );
