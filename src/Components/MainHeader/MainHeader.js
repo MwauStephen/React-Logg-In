@@ -6,7 +6,10 @@ const MainHeader = (props) => {
   return (
     <header className={styles["main-header"]}>
       <h1>A login Page</h1>
-      <Navigation isLoggedIn={props.isAuthenticated} />
+      <Navigation
+        isLoggedIn={props.isAuthenticated}
+        onLogOut={props.onLogOut}
+      />
     </header>
   );
 };
