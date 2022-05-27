@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
@@ -30,21 +30,6 @@ const Login = (props) => {
   // const [passwordIsValid, setPassworIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  // useEffect(() => {
-  //   const identifier = setTimeout(() => {
-  //     console.log("Checking form validity");
-  //     setFormIsValid(
-  //       enteredEmail.includes("@") && enteredPassword.trim().length > 6
-  //     );
-  //   }, 500);
-  //   // add a cleanup function(debouncing)
-  //   return () => {
-  //     console.log("Clean up running");
-  //     clearTimeout(identifier);
-  //   };
-  //   // check if  entire form is valid
-  // }, [enteredEmail, enteredPassword]);
-
   // useReducer for email
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
@@ -57,15 +42,30 @@ const Login = (props) => {
     isCorrect: false,
   });
 
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log("Checking form validity");
+      setFormIsValid(emailState.isValid && passwordState.isCorrect);
+    }, 500);
+    // add a cleanup function(debouncing)
+    return () => {
+      console.log("Clean up running");
+      clearTimeout(identifier);
+    };
+    // check if  entire form is valid
+  }, [emailState, passwordState]);
+
   //   handling email and password inputs
   const emailChangeHandler = (event) => {
     // setEnteredEmail(event.target.value);
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
+
+    // setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
   };
 
   const passwordChangeHandler = (event) => {
     // setEnteredPassword(event.target.value);
-    setFormIsValid(emailState.isValid && passwordState.isCorrect);
+    // setFormIsValid(emailState.isValid && passwordState.isCorrect);
     dispatchPassword({ type: "USER_PASSWORD", val: event.target.value });
   };
 
