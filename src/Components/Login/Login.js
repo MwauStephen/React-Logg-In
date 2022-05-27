@@ -15,7 +15,7 @@ const Login = (props) => {
     setFormIsValid(
       enteredEmail.includes("@") && enteredPassword.trim().length > 6
     );
-  }, []);
+  }, [enteredEmail, enteredPassword]);
 
   //   handling email and password inputs
   const emailChangeHandler = (event) => {
