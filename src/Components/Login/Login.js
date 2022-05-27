@@ -3,6 +3,10 @@ import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
 
+const emailReducer = (state, action) => {
+  return { value: "", isValid: false };
+};
+
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [emailIsValid, setEmailIsValid] = useState();
@@ -24,6 +28,12 @@ const Login = (props) => {
   //   };
   //   // check if  entire form is valid
   // }, [enteredEmail, enteredPassword]);
+
+  // useReducer for email
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
+    value: "",
+    isValid: false,
+  });
 
   //   handling email and password inputs
   const emailChangeHandler = (event) => {
