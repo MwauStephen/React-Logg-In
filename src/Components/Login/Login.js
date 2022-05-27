@@ -13,6 +13,10 @@ const emailReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
+const passwordReducer = (state, action) => {
+  return { value: "", isCorrect: false };
+};
+
 const Login = (props) => {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
@@ -39,6 +43,12 @@ const Login = (props) => {
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
     isValid: undefined,
+  });
+
+  // useReducer for password
+  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
+    value: "",
+    isCorrect: false,
   });
 
   //   handling email and password inputs
