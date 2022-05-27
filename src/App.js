@@ -3,6 +3,7 @@ import MainHeader from "./Components/MainHeader/MainHeader";
 import Login from "./Components/Login/Login";
 
 import Home from "./Components/Home/Home";
+import AuthContext from "./Context/auth-context";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,12 +26,14 @@ function App() {
   };
   return (
     <Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} onLogOut={logOutHandler} />
-      <main>
-        {!isLoggedIn && <Login onLoggedIn={loginHandler} />}
+      <AuthContext.Provider>
+        <MainHeader isAuthenticated={isLoggedIn} onLogOut={logOutHandler} />
+        <main>
+          {!isLoggedIn && <Login onLoggedIn={loginHandler} />}
 
-        {isLoggedIn && <Home onLogOut={logOutHandler} />}
-      </main>
+          {isLoggedIn && <Home onLogOut={logOutHandler} />}
+        </main>
+      </AuthContext.Provider>
     </Fragment>
   );
 }
