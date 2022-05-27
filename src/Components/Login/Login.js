@@ -39,7 +39,7 @@ const Login = (props) => {
   // useReducer for password
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: "",
-    isCorrect: false,
+    isCorrect: undefined,
   });
 
   const { isValid: emailIsValid } = emailState;
@@ -47,7 +47,7 @@ const Login = (props) => {
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log("Checking form validity");
-      setFormIsValid(emailState.isValid && passwordState.isCorrect);
+      setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
     // add a cleanup function(debouncing)
     return () => {
@@ -55,7 +55,7 @@ const Login = (props) => {
       clearTimeout(identifier);
     };
     // check if  entire form is valid
-  }, [emailState, passwordState]);
+  }, [emailIsValid, passwordIsValid]);
 
   //   handling email and password inputs
   const emailChangeHandler = (event) => {
