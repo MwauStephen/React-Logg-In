@@ -26,8 +26,10 @@ function App() {
   };
   return (
     <Fragment>
-      <AuthContext.Provider value={{ isLoggedIn: isLoggedIn }}>
-        <MainHeader onLogOut={logOutHandler} />
+      <AuthContext.Provider
+        value={{ isLoggedIn: isLoggedIn, onLogOut: logOutHandler }}
+      >
+        <MainHeader />
         <main>
           {!isLoggedIn && <Login onLoggedIn={loginHandler} />}
 
