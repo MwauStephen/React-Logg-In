@@ -42,6 +42,8 @@ const Login = (props) => {
     isCorrect: false,
   });
 
+  const { isValid: emailIsValid } = emailState;
+  const { isCorrect: passwordIsValid } = passwordState;
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log("Checking form validity");
