@@ -7,8 +7,14 @@ import Home from "./Components/Home/Home";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const storedValue = localStorage.getItem("logCredentials");
+  if(storedValue === '1'){
+    setIsLoggedIn(true)
+  }
+
   // login handler after validation of email and password(through lifting state)
   const loginHandler = (email, password) => {
+    localStorage.setItem("logCredentials", "1");
     setIsLoggedIn(true);
   };
 
