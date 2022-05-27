@@ -46,13 +46,13 @@ const Login = (props) => {
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
     setFormIsValid(
-      event.target.value.trim().length > 6 && enteredEmail.includes("@")
+      event.target.value.trim().length > 6 && emailState.isValid.includes("@")
     );
   };
 
   //   validate email and password
   const validateEmailHandler = (event) => {
-    setEmailIsValid(enteredEmail.includes("@"));
+    setEmailIsValid(emailState.isValid);
   };
   const validatePasswordHandler = (event) => {
     setPassworIsValid(enteredPassword.trim().length > 6);
@@ -60,20 +60,20 @@ const Login = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(enteredEmail, enteredPassword);
+    // console.log(emailState.value, enteredPassword);
     // clear form inputs on submission
     // setEnteredEmail("");
     // setEnteredPassword("");
 
     // lifiting state up
-    props.onLoggedIn(enteredEmail, enteredPassword);
+    props.onLoggedIn(emailState.value, enteredPassword);
   };
   return (
     <Card className={styles.login}>
       <form onSubmit={formSubmitHandler}>
         <div
           className={`${styles.control} ${
-            emailIsValid === false ? styles.invalid : ""
+            emailState.isValid === false ? styles.invalid : ""
           }`}
         >
           <label htmlFor="email">E-mail:</label>
@@ -82,7 +82,7 @@ const Login = (props) => {
             id="email"
             onBlur={validateEmailHandler}
             onChange={emailChangeHandler}
-            value={enteredEmail}
+            value={emailState.value}
           />
         </div>
         <div
