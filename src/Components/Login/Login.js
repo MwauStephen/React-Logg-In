@@ -17,6 +17,10 @@ const Login = (props) => {
         enteredEmail.includes("@") && enteredPassword.trim().length > 6
       );
     }, 500);
+    // add a cleanup function(debouncing)
+    return () => {
+      console.log("Clean up running");
+    };
     // check if  entire form is valid
   }, [enteredEmail, enteredPassword]);
 
