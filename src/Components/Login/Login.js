@@ -4,6 +4,12 @@ import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
 
 const emailReducer = (state, action) => {
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.val.includes("@") };
+  }
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.includes("@") };
+  }
   return { value: "", isValid: false };
 };
 
@@ -32,27 +38,25 @@ const Login = (props) => {
   // useReducer for email
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
-    isValid: false,
+    isValid: undefined,
   });
 
   //   handling email and password inputs
   const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
+    // setEnteredEmail(event.target.value);
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
   };
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
-    setFormIsValid(
-      event.target.value.trim().length > 6 && emailState.isValid.includes("@")
-    );
+    setFormIsValid(emailState.isValid && event.target.value.trim().length > 6);
   };
 
   //   validate email and password
   const validateEmailHandler = (event) => {
-    setEmailIsValid(emailState.isValid);
+    dispatchEmail({ type: "INPUT_BLUR" });
   };
-  const validatePasswordHandler = (event) => {
+  const validatePasswordHandler = () => {
     setPassworIsValid(enteredPassword.trim().length > 6);
   };
 
